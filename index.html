@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proiect Fizica Constructiilor</title>
+    <script>
+        function addInput() {
+            var container = document.getElementById("input-container");
+
+            // Create div element
+            var inputDiv = document.createElement("div");
+            inputDiv.id = "input-var";
+
+            // Create label and input elements for each field
+            var labels = ["Nume valoare:", "d (cm):", "μ:", "λ (W/mK):"];
+            var name = ["nume", "d", "miu", "lambda"];
+            var placeholders = ["ex: Beton Armat 1", "ex: 12", "", ""];
+
+            for (var i = 0; i < labels.length; i++) {
+                var label = document.createElement("label");
+                label.setAttribute("for", "input");
+                label.textContent = labels[i];
+
+                var input = document.createElement("input");
+                input.type = "text"
+
+                input.name = name[i];
+                input.placeholder = placeholders[i];
+
+                // Create line break element for spacing
+                var lineBreak = document.createElement("br");
+
+                // Append label, input, and line break to the div
+                inputDiv.appendChild(label);
+                inputDiv.appendChild(input);
+                inputDiv.appendChild(lineBreak);
+            }
+
+
+            // Append the created div to the container
+            container.appendChild(inputDiv);
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding:    10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #input-container {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        #input-var {
+            
+            box-shadow: 0 4px 5px #00000030;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            width: fit-content;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Proiect Fizica Constructiilor</h1>
+    <h3>Echipa: Poienariu Razvan, Grigore Mihai, Serban Andrei </h3>
+    
+    <form action="/submit" method="post">
+        <div id="input-container">
+            <div id="input-var">
+                <label for="input">Nume valoare:</label>
+                <input type="text" name="nume" placeholder="ex: Beton Armat 1"> <br>
+                <label for="input">d (cm):</label>
+                <input type="text" name="d" placeholder="ex: 12"> <br>
+                <label for="input">μ:</label>
+                <input type="text" name="miu" placeholder=""> <br>
+                <label for="input">λ (W/mK):</label>
+                <input type="text" name="lambda" placeholder=""> <br>
+              
+            </div>
+        </div>
+        <hr>
+        <div>
+            <div >
+                <label for="input">Θi:</label>
+                <input type="text" name="theta_i" > <br>
+                <label for="input">φi:</label>
+                <input type="text" name="phi_i" > <br>
+                <label for="input">Θe:</label>
+                <input type="text" name="theta_e" > <br>
+                <label for="input">φe:</label>
+                <input type="text" name="phi_e" > <br>
+            </div>
+        </div>
+
+        <button type="button" onclick="addInput()">Add Input</button>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

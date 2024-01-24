@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezultat</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 20px;
+    }
+
+    #vars {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+    }
+
+    #var {
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    iframe {
+        width: 100%;
+        border: none;
+        overflow: hidden;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<body>
+    <div id="vars">
+        <div id="var">
+            <ul>
+                {{range $i, $a := .P}}
+                <div>
+                <p><li>P{{$i}}:{{$a}}</li></p>
+                </div>    
+                {{end}}
+            </ul>
+        </div>
+        <div id="var">
+                <ul>
+                    {{range $i, $a := .Theta}}
+                    <div>
+                    <p><li>Theta{{$i}}:{{$a}}</li></p>
+                    </div>    
+                    {{end}}
+                </ul>
+        </div>
+        <div id="var">
+            <ul>
+                {{range $i, $a := .Ps}}
+                <div>
+                <p><li>Ps{{$i}}:{{$a}}</li></p>
+                </div>    
+                {{end}}
+            </ul>
+    </div>
+
+    </div>
+        <iframe src="static/plot1.html" title="Plot1" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;"></iframe>
+        {{if .Pb}}
+            <p>Pentru situatia climatica data, se observa ca cele doua grafice se intersecteaza, astfel in elementul de constructie apare condens.</p>
+            <p>Pentru a rezolva aceasta problema se utilizeaza o bariera contra vaporilor (pe fata calda)</p>
+            <div id="vars">
+                <div id="var">
+                    <ul>
+                      
+                        <div>
+                        <p><li>d:0.2</li></p>
+                        <p><li>μ:0.1</li></p>
+                        </div>    
+              
+                    </ul>
+                </div>
+                <div id="var">
+                    <ul>
+                        {{range $i, $a := .Pb}}
+                        <div>
+                        <p><li>P{{$i}}:{{$a}}</li></p>
+                        </div>    
+                        {{end}}
+                    </ul>
+                </div>
+            </div>
+            <iframe src="static/plot2.html" title="Plot2" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;"></iframe>
+        {{end}}
+</body>
+
+</html>
